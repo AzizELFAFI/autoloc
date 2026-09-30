@@ -51,12 +51,6 @@ public class Vehicule {
     )
     private List<Equipement> equipements = new ArrayList<>();
 
-    // 1 Vehicule -> N Maintenances
-    @OneToMany(
-            mappedBy = "vehicule",
-            cascade = CascadeType.PERSIST
-    )
-    private List<Maintenance> maintenances = new ArrayList<>();
 
     // 1 Vehicule -> N Reservations
     @OneToMany(mappedBy = "vehicule")
