@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Contrat;
 import tn.esprit.autoloc.services.IContratService;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("contrat")
@@ -19,5 +21,10 @@ public class ContratController {
     @PutMapping
     public Contrat updateContrat(@RequestBody Contrat contrat) {
         return contratService.modifierContrat(contrat);
+    }
+
+    @GetMapping
+    public List<Contrat> listerContrat() {
+        return contratService.consulterContrats();
     }
 }
