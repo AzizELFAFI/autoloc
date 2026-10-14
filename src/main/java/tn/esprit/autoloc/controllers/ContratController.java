@@ -27,4 +27,14 @@ public class ContratController {
     public List<Contrat> listerContrat() {
         return contratService.consulterContrats();
     }
+
+    @GetMapping("/getById/{idContrat}")
+    public Contrat getContratById(@PathVariable Long idContrat) {
+        return contratService.consulterContratById(idContrat);
+    }
+
+    @DeleteMapping("/delete/{idContrat}")
+    public void deleteById(@PathVariable Long idContrat) {
+        contratService.supprimerContratById(idContrat);
+    }
 }
