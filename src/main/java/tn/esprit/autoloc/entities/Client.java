@@ -31,9 +31,6 @@ public class Client {
 
     private java.time.LocalDate dateInscription;
 
-    @OneToMany(
-            mappedBy = "client",
-            cascade = CascadeType.PERSIST
-    )
+    @OneToMany(mappedBy = "client")
     private List<Reservation> reservations = new ArrayList<>();
 }

@@ -33,10 +33,7 @@ public class Contrat {
     private Reservation reservation;
 
     // 1 Contrat -> N Paiements
-    @OneToMany(
-            mappedBy = "contrat",
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(mappedBy = "contrat")
     private List<Paiement> paiements = new ArrayList<>();
 
 }
