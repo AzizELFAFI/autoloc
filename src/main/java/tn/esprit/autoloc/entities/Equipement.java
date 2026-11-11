@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Getter
@@ -21,6 +22,7 @@ public class Equipement {
 
     private String libelle;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "equipements")
     private List<Vehicule> vehicules = new ArrayList<>();
 }

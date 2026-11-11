@@ -12,6 +12,7 @@ import tn.esprit.autoloc.entities.enums.StatutVehicule;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Getter
@@ -38,6 +39,7 @@ public class Vehicule {
     private StatutVehicule statut;
 
     // N Vehicules -> 1 Agence
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_agence")
     private Agence agence;
