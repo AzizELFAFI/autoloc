@@ -1,5 +1,7 @@
 package tn.esprit.autoloc.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Employe;
@@ -10,9 +12,11 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("employe")
+@Tag(name = "Gestion des employes", description = "CRUD")
 public class EmployeController {
     private final IEmployeService employeService;
 
+    @Operation(summary = "Ajout d'un employe")
     @PostMapping
     public Employe ajouterEmploye(@RequestBody Employe employe) {
         return employeService.ajouterEmploye(employe);

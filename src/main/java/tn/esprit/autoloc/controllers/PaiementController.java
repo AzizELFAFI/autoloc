@@ -1,5 +1,7 @@
 package tn.esprit.autoloc.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Paiement;
@@ -10,9 +12,11 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("paiement")
+@Tag(name = "Gestion des paiements", description = "CRUD")
 public class PaiementController {
     private final IPaiementService paiementService;
 
+    @Operation(summary = "Ajout d'un paiement")
     @PostMapping
     public Paiement ajouterPaiement(@RequestBody Paiement paiement) {
         return paiementService.ajouterPaiement(paiement);

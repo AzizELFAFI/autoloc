@@ -1,5 +1,7 @@
 package tn.esprit.autoloc.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Client;
@@ -10,9 +12,11 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("client")
+@Tag(name = "Gestion des clients", description = "CRUD")
 public class ClientController {
     private final IClientService clientService;
 
+    @Operation(summary = "Ajout d'un client")
     @PostMapping
     public Client ajouterClient(@RequestBody Client client) {
         return clientService.ajouterClient(client);
