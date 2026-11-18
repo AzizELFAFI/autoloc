@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.services;
 
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.entities.Vehicule;
 import tn.esprit.autoloc.repositories.VehiculeRepository;
@@ -8,6 +9,8 @@ import tn.esprit.autoloc.entities.Equipement;
 import tn.esprit.autoloc.repositories.EquipementRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -71,5 +74,26 @@ public class IVehiculeServiceImp implements IVehiculeService {
            }
        }
        return null;
+    }
+
+    @Scheduled(initialDelay = 5000, fixedRate = 60000)
+    public void actualiserEtatVehicules() {
+        List<Vehicule> vehicules = vehiculeRepository.findAll();
+        System.out.println("===================================");
+        System.out.println("Nombre total de véhicules enregistrés : " + vehicules.size());
+        System.out.println("Date et heure de l'actualisation : " + LocalDateTime.now());
+        System.out.println("===================================");
+    }
+
+    @Scheduled(cron = "0 0 9 * * MON")
+    public void genererRapportVehicules() {
+        List<Vehicule> vehicules = vehiculeRepository.findAll();
+        int nombreTotalVehicules = vehicules.size();
+        System.out.println("===================================");
+        System.out.println("RAPPORT PÉRIODIQUE DES VÉHICULES");
+        System.out.println("===================================");
+        System.out.println("Nombre total de véhicules : " + nombreTotalVehicules);
+        System.out.println("Date et heure de génération : " + LocalDateTime.now());
+        System.out.println("===================================");
     }
 }
